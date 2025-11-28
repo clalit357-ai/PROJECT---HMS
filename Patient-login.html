@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Login - WeCare Hospitals</title>
+  <link rel="stylesheet" href="patient-styling.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+    <!-- TOP BAR -->
+    <header class="topbar">
+      <div class="logo-area">
+        <div class="logo-circle">W</div>
+        <div class="logo-text">
+          <h1>WeCare Hospitals</h1>
+          <p>Patient Portal</p>
+        </div>
+      </div>
+
+      <div class="user-area">
+        <span class="user-name" id="patient-name-display">
+          Welcome, Patient
+        </span>
+        <button class="btn-outline">Sign Out</button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- STEP 1: DOMAIN OF INTEREST -->
+      <section id="domain-step" class="step active-step">
+        <div class="card-full">
+          <h2>Select Your Domain of Interest</h2>
+          <p class="subtitle">
+            Tell us what kind of help you need so we can set up your dashboard properly.
+          </p>
+
+          <!-- TYPE OF VISIT -->
+          <div class="section-block">
+            <h3>1. Type of Visit</h3>
+            <div class="option-grid">
+              <label class="option-pill">
+                <input type="radio" name="visit_type" value="opd" checked />
+                <span>OPD Consultation</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="visit_type" value="bed" />
+                <span>Book a Bed / Admission</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="visit_type" value="followup" />
+                <span>Follow-up Visit</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="visit_type" value="tests" />
+                <span>Tests / Diagnostics</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- DEPARTMENT -->
+          <div class="section-block">
+            <h3>2. Department / Specialty</h3>
+            <div class="option-grid">
+              <label class="option-pill">
+                <input type="radio" name="dept" value="ortho" checked />
+                <span>Orthopedics</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="dept" value="gynac" />
+                <span>Gynaecology</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="dept" value="cardio" />
+                <span>Cardiology</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="dept" value="neuro" />
+                <span>Neurology</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="dept" value="general" />
+                <span>General Medicine</span>
+              </label>
+              <label class="option-pill">
+                <input type="radio" name="dept" value="pediatrics" />
+                <span>Pediatrics</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SPECIFIC CONCERN -->
+          <div class="section-block">
+            <h3>3. Any specific concern?</h3>
+            <textarea
+              class="input-textarea"
+              id="concern-input"
+              placeholder="Type your main complaint or concern here."
+            ></textarea>
+          </div>
+
+          <div class="actions">
+            <button class="btn-primary" id="continue-btn">
+              Continue to Dashboard
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 2: PATIENT DASHBOARD -->
+      <section id="dashboard-step" class="step">
+        <div class="dashboard-layout">
+          <!-- SIDEBAR WITH TABS -->
+          <aside class="sidebar">
+            <h3>Patient Dashboard</h3>
+            <nav class="sidebar-nav">
+              <button class="nav-item active-nav" data-target="overview-panel">
+                Overview
+              </button>
+              <button class="nav-item" data-target="record-panel">
+                Patient Record
+              </button>
+              <button class="nav-item" data-target="billing-panel">
+                Billing Portal
+              </button>
+              <button class="nav-item" data-target="accounts-panel">
+                Accounts
+              </button>
+              <button class="nav-item" data-target="history-panel">
+                History & Medical Records
+              </button>
+            </nav>
+          </aside>
+
+          <!-- MAIN DASHBOARD CONTENT -->
+          <section class="dashboard-content">
+
+            <!-- OVERVIEW PANEL -->
+            <div id="overview-panel" class="dashboard-panel active-panel">
+              <div class="content-card">
+                <h2>Overview</h2>
+                <p class="subtitle">
+                  Summary of your current status at WeCare Hospitals.
+                </p>
+
+                <div class="overview-grid">
+                  <div class="mini-card">
+                    <h4>Current Visit</h4>
+                    <p id="overview-current-visit">
+                      Data will appear here from backend.
+                    </p>
+                  </div>
+                  <div class="mini-card">
+                    <h4>Department</h4>
+                    <p id="overview-department">
+                      Selected department will appear here.
+                    </p>
+                  </div>
+                  <div class="mini-card">
+                    <h4>Billing Status</h4>
+                    <p id="overview-billing-status">
+                      Billing summary will appear here.
+                    </p>
+                  </div>
+                  <div class="mini-card">
+                    <h4>Recent Updates</h4>
+                    <p id="overview-updates">
+                      Recent notifications or updates will appear here.
+                    </p>
+                  </div>
+                </div>
+
+                <h3 class="section-title">Quick Actions</h3>
+                <div class="quick-actions">
+                  <button class="btn-chip">Book / Reschedule Appointment</button>
+                  <button class="btn-chip">View Prescriptions</button>
+                  <button class="btn-chip">View Lab Reports</button>
+                  <button class="btn-chip">Update Profile</button>
+                </div>
+
+                <h3 class="section-title">Notifications</h3>
+                <ul class="notification-list" id="notification-list">
+                  <li>Notifications from backend will be listed here.</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- PATIENT RECORD PANEL -->
+            <div id="record-panel" class="dashboard-panel">
+              <div class="content-card">
+                <h2>Patient Record</h2>
+                <p class="subtitle">
+                  Basic information and current admission / consultation details.
+                </p>
+
+                <div class="two-column-grid">
+                  <div class="info-card">
+                    <h4>Personal Details</h4>
+                    <p><span class="label">Name:</span> <span id="record-name">—</span></p>
+                    <p><span class="label">Age:</span> <span id="record-age">—</span></p>
+                    <p><span class="label">Gender:</span> <span id="record-gender">—</span></p>
+                    <p><span class="label">Blood Group:</span> <span id="record-blood-group">—</span></p>
+                    <p><span class="label">Contact:</span> <span id="record-contact">—</span></p>
+                  </div>
+
+                  <div class="info-card">
+                    <h4>Current Case</h4>
+                    <p><span class="label">Department:</span> <span id="record-dept">—</span></p>
+                    <p><span class="label">Consultant:</span> <span id="record-consultant">—</span></p>
+                    <p><span class="label">Status:</span> <span id="record-status">—</span></p>
+                    <p><span class="label">Primary Complaint:</span> <span id="record-complaint">—</span></p>
+                    <p><span class="label">Next Review:</span> <span id="record-next-review">—</span></p>
+                  </div>
+                </div>
+
+                <h3 class="section-title">Vitals (Last Visit)</h3>
+                <table class="data-table" id="vitals-table">
+                  <thead>
+                    <tr>
+                      <th>Parameter</th>
+                      <th>Value</th>
+                      <th>Recorded On</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Insert rows from backend -->
+                    <tr>
+                      <td colspan="3">Vitals data will appear here.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- BILLING PANEL -->
+            <div id="billing-panel" class="dashboard-panel">
+              <div class="content-card">
+                <h2>Billing Portal</h2>
+                <p class="subtitle">
+                  View and manage all your bills and payments at WeCare Hospitals.
+                </p>
+
+                <table class="data-table" id="billing-table">
+                  <thead>
+                    <tr>
+                      <th>Bill No.</th>
+                      <th>Date</th>
+                      <th>Department</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Billing rows from backend -->
+                    <tr>
+                      <td colspan="5">Billing records will appear here.</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <h3 class="section-title">Billing Actions</h3>
+                <div class="quick-actions">
+                  <button class="btn-chip">Pay Pending Bill</button>
+                  <button class="btn-chip">Download Invoice</button>
+                  <button class="btn-chip">View Insurance Coverage</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ACCOUNTS PANEL -->
+            <div id="accounts-panel" class="dashboard-panel">
+              <div class="content-card">
+                <h2>Accounts</h2>
+                <p class="subtitle">
+                  Manage your saved payment methods and insurance details.
+                </p>
+
+                <div class="two-column-grid">
+                  <div class="info-card">
+                    <h4>Saved Payment Methods</h4>
+                    <ul class="simple-list" id="payment-methods-list">
+                      <li>Payment methods from backend will appear here.</li>
+                    </ul>
+                    <button class="btn-chip">Add New Payment Method</button>
+                  </div>
+
+                  <div class="info-card">
+                    <h4>Insurance Details</h4>
+                    <p><span class="label">Provider:</span> <span id="ins-provider">—</span></p>
+                    <p><span class="label">Policy No:</span> <span id="ins-policy">—</span></p>
+                    <p><span class="label">Coverage:</span> <span id="ins-coverage">—</span></p>
+                    <p><span class="label">Valid Till:</span> <span id="ins-validity">—</span></p>
+                    <button class="btn-chip">Update Insurance Info</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- HISTORY & RECORDS PANEL -->
+            <div id="history-panel" class="dashboard-panel">
+              <div class="content-card">
+                <h2>History & Medical Records</h2>
+                <p class="subtitle">
+                  Access your previous visits, prescriptions, and lab reports.
+                </p>
+
+                <h3 class="section-title">Visit Timeline</h3>
+                <ul class="timeline" id="visit-timeline">
+                  <!-- Timeline items from backend -->
+                  <li>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                      <h4>Visit history will appear here.</h4>
+                      <p>Use backend / JS to populate this timeline.</p>
+                    </div>
+                  </li>
+                </ul>
+
+                <h3 class="section-title">Available Documents</h3>
+                <table class="data-table" id="documents-table">
+                  <thead>
+                    <tr>
+                      <th>Type</th>
+                      <th>Title</th>
+                      <th>Date</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Document rows from backend -->
+                    <tr>
+                      <td colspan="4">Documents will appear here.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 WeCare Hospitals - Hospital Management System</p>
+    </footer>
+  </div>
+
+  <!-- JS: move from domain step to dashboard + tab switching -->
+  <script>
+    const continueBtn = document.getElementById("continue-btn");
+    const domainStep = document.getElementById("domain-step");
+    const dashboardStep = document.getElementById("dashboard-step");
+
+    continueBtn.addEventListener("click", function () {
+      domainStep.classList.remove("active-step");
+      domainStep.classList.add("hidden-step");
+      dashboardStep.classList.add("active-step");
+
+      // Optional: example of how you can read selected values
+      const dept = document.querySelector('input[name="dept"]:checked');
+      const overviewDept = document.getElementById("overview-department");
+      const recordDept = document.getElementById("record-dept");
+      if (dept && overviewDept && recordDept) {
+        overviewDept.textContent = dept.value + " (selected)";
+        recordDept.textContent = dept.value;
+      }
+
+      const concern = document.getElementById("concern-input").value;
+      const overviewUpdates = document.getElementById("overview-updates");
+      if (concern && overviewUpdates) {
+        overviewUpdates.textContent = concern;
+      }
+    });
+
+    // Sidebar tab switching (front-end only, content you fill via backend/JS)
+    const navItems = document.querySelectorAll(".nav-item");
+    const panels = document.querySelectorAll(".dashboard-panel");
+
+    navItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const targetId = item.getAttribute("data-target");
+
+        navItems.forEach((btn) => btn.classList.remove("active-nav"));
+        item.classList.add("active-nav");
+
+        panels.forEach((panel) => {
+          panel.classList.remove("active-panel");
+          if (panel.id === targetId) {
+            panel.classList.add("active-panel");
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
